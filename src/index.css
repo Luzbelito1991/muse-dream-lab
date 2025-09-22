@@ -2,57 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DreamFrame Design System - Dreamy, Ethereal, Surreal */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core dreamy palette */
+    --dream-purple: 272 55% 23%; /* #3C1A5B */
+    --dream-turquoise: 178 40% 67%; /* #4EC6C1 */
+    --dream-peach: 23 80% 73%; /* #F7A97F */
+    --dream-pink: 336 45% 92%; /* #FADADD */
+    --dream-pearl: 0 0% 100%; /* #FFFFFF */
+    --dream-star: 45 100% 80%; /* #FFE9A3 */
+    --dream-violet: 253 74% 59%; /* #7F5AF0 */
+    --dream-lavender: 253 100% 82%; /* #BFA3FF */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Semantic colors */
+    --background: var(--dream-purple);
+    --foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: 272 55% 23% / 0.8;
+    --card-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: 272 55% 23%;
+    --popover-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: var(--dream-violet);
+    --primary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: var(--dream-lavender);
+    --secondary-foreground: 272 55% 23%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 272 55% 23% / 0.6;
+    --muted-foreground: 0 0% 85%;
+
+    --accent: var(--dream-turquoise);
+    --accent-foreground: 272 55% 23%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 100% / 0.2;
+    --input: 0 0% 100% / 0.1;
+    --ring: var(--dream-lavender);
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom gradients */
+    --gradient-main: linear-gradient(135deg, hsl(var(--dream-purple)) 0%, hsl(var(--dream-turquoise)) 50%, hsl(var(--dream-peach)) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(var(--dream-violet)), hsl(var(--dream-lavender)));
+    --gradient-card: linear-gradient(135deg, hsl(272 55% 23% / 0.3), hsl(178 40% 67% / 0.2));
+    
+    /* Typography */
+    --font-logo: 'Playfair Display', serif;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-quote: 'Cormorant', serif;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
@@ -100,6 +108,115 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    background: var(--gradient-main);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Dreamy floating clouds */
+  .cloud {
+    @apply absolute opacity-60;
+    background: hsl(var(--dream-pink));
+    border-radius: 100px;
+    filter: blur(1px);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: '';
+    @apply absolute bg-inherit rounded-full;
+  }
+
+  .cloud::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+  }
+
+  .cloud::after {
+    width: 100px;
+    height: 80px;
+    top: -45px;
+    right: 15px;
+  }
+
+  /* Twinkling stars */
+  .star {
+    @apply absolute rounded-full;
+    background: hsl(var(--dream-star));
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .star-bright {
+    background: hsl(var(--dream-pearl));
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  /* Button variants */
+  .btn-dream {
+    @apply px-8 py-4 rounded-full font-heading font-semibold uppercase tracking-wider text-white;
+    background: var(--gradient-button);
+    transition: var(--transition-smooth);
+    box-shadow: 0 8px 25px hsl(var(--dream-violet) / 0.3);
+  }
+
+  .btn-dream:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px hsl(var(--dream-violet) / 0.4);
+  }
+
+  /* Glass morphism card */
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+    @apply rounded-3xl;
+  }
+
+  /* Typography classes */
+  .font-logo {
+    font-family: var(--font-logo);
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-quote {
+    font-family: var(--font-quote);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
