@@ -12,22 +12,22 @@ const tracks: Track[] = [
   {
     id: 1,
     name: "Nocturno Onírico",
-    url: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" // Free sound for demo
+    url: "https://www.bensound.com/bensound-music/bensound-relaxing.mp3"
   },
   {
     id: 2,
-    name: "Susurros Etéreos",
-    url: "https://www.soundjay.com/misc/sounds/chime-02.wav" // Free sound for demo
+    name: "Susurros Etéreos", 
+    url: "https://www.bensound.com/bensound-music/bensound-sweet.mp3"
   },
   {
     id: 3,
     name: "Lluvia de Sueños",
-    url: "https://www.soundjay.com/misc/sounds/wind-chimes-02.wav" // Free sound for demo
+    url: "https://www.bensound.com/bensound-music/bensound-piano.mp3"
   },
   {
     id: 4,
     name: "Melodía Celestial",
-    url: "https://www.soundjay.com/misc/sounds/meditation-chime.wav" // Free sound for demo
+    url: "https://www.bensound.com/bensound-music/bensound-calm.mp3"
   }
 ];
 
@@ -99,7 +99,7 @@ const MusicPlayer = () => {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <div className="glass-card p-4 min-w-[280px]">
+      <div className="glass-card p-2 min-w-[220px]">
         <audio
           ref={audioRef}
           src={tracks[currentTrack].url}
@@ -108,51 +108,51 @@ const MusicPlayer = () => {
           onPause={() => setIsPlaying(false)}
         />
         
-        <div className="text-center mb-3">
-          <h3 className="font-heading text-sm text-white/90 mb-1">Radio de Relajación</h3>
-          <p className="text-xs text-white/70 truncate">{tracks[currentTrack].name}</p>
+        <div className="text-center mb-2">
+          <h3 className="font-heading text-xs text-white/90 mb-0.5">Radio</h3>
+          <p className="text-[10px] text-white/70 truncate">{tracks[currentTrack].name}</p>
         </div>
 
-        <div className="flex items-center justify-center gap-2 mb-3">
+        <div className="flex items-center justify-center gap-1 mb-2">
           <Button
             variant="ghost"
             size="sm"
             onClick={prevTrack}
-            className="text-white/80 hover:text-white hover:bg-white/10"
+            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
           >
-            <SkipBack className="h-4 w-4" />
+            <SkipBack className="h-3 w-3" />
           </Button>
 
           <Button
             variant="ghost"
             size="sm"
             onClick={togglePlay}
-            className="text-white/80 hover:text-white hover:bg-white/10"
+            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
           >
-            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
           </Button>
 
           <Button
             variant="ghost"
             size="sm"
             onClick={nextTrack}
-            className="text-white/80 hover:text-white hover:bg-white/10"
+            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
           >
-            <SkipForward className="h-4 w-4" />
+            <SkipForward className="h-3 w-3" />
           </Button>
 
           <Button
             variant="ghost"
             size="sm"
             onClick={toggleMute}
-            className="text-white/80 hover:text-white hover:bg-white/10 ml-2"
+            className="text-white/80 hover:text-white hover:bg-white/10 ml-1 h-7 w-7 p-0"
           >
-            {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            {isMuted ? <VolumeX className="h-3 w-3" /> : <Volume2 className="h-3 w-3" />}
           </Button>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-white/60">Vol</span>
+        <div className="flex items-center gap-1">
+          <span className="text-[10px] text-white/60">Vol</span>
           <input
             type="range"
             min="0"
