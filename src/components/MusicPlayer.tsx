@@ -12,7 +12,7 @@ const tracks: Track[] = [
   {
     id: 1,
     name: "Nocturno Onírico",
-    url: "https://www.bensound.com/bensound-music/bensound-relaxing.mp3"
+    url: "https://www.soundjay.com/misc/sounds/chime-08.wav"
   },
   {
     id: 2,
@@ -22,12 +22,12 @@ const tracks: Track[] = [
   {
     id: 3,
     name: "Lluvia de Sueños",
-    url: "https://www.bensound.com/bensound-music/bensound-piano.mp3"
+    url: "https://www.soundjay.com/misc/sounds/rain-03.wav"
   },
   {
     id: 4,
     name: "Melodía Celestial",
-    url: "https://www.bensound.com/bensound-music/bensound-calm.mp3"
+    url: "https://www.soundjay.com/misc/sounds/soft-bell.wav"
   }
 ];
 
