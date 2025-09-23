@@ -11,23 +11,8 @@ interface Track {
 const tracks: Track[] = [
   {
     id: 1,
-    name: "Nocturno Onírico",
-    url: "https://www.soundjay.com/misc/sounds/chime-08.wav"
-  },
-  {
-    id: 2,
-    name: "Susurros Etéreos", 
-    url: "https://www.bensound.com/bensound-music/bensound-sweet.mp3"
-  },
-  {
-    id: 3,
-    name: "Lluvia de Sueños",
-    url: "https://www.soundjay.com/misc/sounds/rain-03.wav"
-  },
-  {
-    id: 4,
-    name: "Melodía Celestial",
-    url: "https://www.soundjay.com/misc/sounds/soft-bell.wav"
+    name: "Arpa Celta - Connecting Rainbows",
+    url: "/audio/connecting-rainbows.mp3"
   }
 ];
 
@@ -109,8 +94,8 @@ const MusicPlayer = () => {
         />
         
         <div className="text-center mb-2">
-          <h3 className="font-heading text-xs text-white/90 mb-0.5">Radio</h3>
-          <p className="text-[10px] text-white/70 truncate">{tracks[currentTrack].name}</p>
+          <h3 className="font-heading text-xs text-foreground/90 mb-0.5">Radio</h3>
+          <p className="text-[10px] text-foreground/80 truncate">{tracks[currentTrack].name}</p>
         </div>
 
         <div className="flex items-center justify-center gap-1 mb-2">
@@ -118,7 +103,7 @@ const MusicPlayer = () => {
             variant="ghost"
             size="sm"
             onClick={prevTrack}
-            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
+            className="text-foreground/80 hover:text-foreground hover:bg-white/10 h-7 w-7 p-0"
           >
             <SkipBack className="h-3 w-3" />
           </Button>
@@ -127,7 +112,7 @@ const MusicPlayer = () => {
             variant="ghost"
             size="sm"
             onClick={togglePlay}
-            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
+            className="text-foreground/80 hover:text-foreground hover:bg-white/10 h-7 w-7 p-0"
           >
             {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
           </Button>
@@ -136,7 +121,7 @@ const MusicPlayer = () => {
             variant="ghost"
             size="sm"
             onClick={nextTrack}
-            className="text-white/80 hover:text-white hover:bg-white/10 h-7 w-7 p-0"
+            className="text-foreground/80 hover:text-foreground hover:bg-white/10 h-7 w-7 p-0"
           >
             <SkipForward className="h-3 w-3" />
           </Button>
@@ -145,14 +130,14 @@ const MusicPlayer = () => {
             variant="ghost"
             size="sm"
             onClick={toggleMute}
-            className="text-white/80 hover:text-white hover:bg-white/10 ml-1 h-7 w-7 p-0"
+            className="text-foreground/80 hover:text-foreground hover:bg-white/10 ml-1 h-7 w-7 p-0"
           >
             {isMuted ? <VolumeX className="h-3 w-3" /> : <Volume2 className="h-3 w-3" />}
           </Button>
         </div>
 
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-white/60">Vol</span>
+          <span className="text-[10px] text-foreground/70">Vol</span>
           <input
             type="range"
             min="0"

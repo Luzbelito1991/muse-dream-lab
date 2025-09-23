@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import cloudImg from '@/assets/cloud.png';
 
 interface FloatingElement {
   id: number;
@@ -47,16 +48,20 @@ const BackgroundElements = () => {
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
       {/* Floating Clouds */}
       {clouds.map((cloud) => (
-        <div
+        <img
           key={`cloud-${cloud.id}`}
-          className="cloud"
+          src={cloudImg}
+          alt="Nube onírica decorativa DreamFrame"
           style={{
+            position: 'absolute',
             left: `${cloud.x}%`,
             top: `${cloud.y}%`,
             width: `${cloud.size}px`,
             height: `${cloud.size * 0.6}px`,
-            animationDuration: `${cloud.duration}s`,
+            opacity: 0.9,
+            animation: `float ${cloud.duration}s ease-in-out infinite`,
             animationDelay: `${cloud.delay}s`,
+            filter: 'drop-shadow(0 6px 16px hsla(0,0%,0%,0.12))',
           }}
         />
       ))}
