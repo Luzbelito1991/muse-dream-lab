@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    /* Editorial cinematographic palette */
-    --night-blue: 225 50% 15%; /* Deep night blue */
-    --editorial-violet: 270 60% 25%; /* Editorial violet */
-    --warm-pink: 340 70% 65%; /* Warm editorial pink */
-    --cloud-light: 220 30% 85%; /* Soft cloud highlights */
-    --cloud-shadow: 240 40% 20%; /* Deep cloud shadows */
-    --dream-pearl: 0 0% 100%; /* #FFFFFF */
-    --dream-star: 45 100% 80%; /* #FFE9A3 */
-    --accent-glow: 280 80% 70%; /* Premium glow */
+    /* Cinematic aerial photography palette */
+    --night-blue: 220 65% 12%; /* Deep cinematic night */
+    --editorial-violet: 265 45% 35%; /* Rich violet */
+    --warm-pink: 335 85% 70%; /* Warm sunset pink */
+    --cloud-white: 210 15% 95%; /* Pure cloud white */
+    --cloud-highlight: 45 25% 88%; /* Warm cloud highlights */
+    --cloud-shadow: 225 35% 25%; /* Cool cloud shadows */
+    --cloud-depth: 240 25% 40%; /* Mid-tone depth */
+    --atmospheric-glow: 280 60% 65%; /* Atmospheric lighting */
 
     /* Semantic colors */
     --background: var(--night-blue);
@@ -47,27 +47,37 @@
 
     --radius: 1rem;
 
-    /* Editorial cinematographic gradients */
-    --gradient-main: linear-gradient(135deg, 
+    /* Cinematic smooth gradients */
+    --gradient-main: linear-gradient(180deg, 
       hsl(var(--night-blue)) 0%, 
-      hsl(var(--editorial-violet)) 40%, 
-      hsl(var(--warm-pink)) 85%, 
-      hsl(340 60% 75%) 100%);
-    --gradient-atmospheric: radial-gradient(ellipse at 30% 20%, 
-      hsl(var(--editorial-violet) / 0.4) 0%, 
-      transparent 70%),
-      radial-gradient(ellipse at 80% 60%, 
-      hsl(var(--warm-pink) / 0.3) 0%, 
-      transparent 60%),
-      linear-gradient(180deg, 
-      hsl(var(--night-blue)) 0%, 
-      hsl(225 45% 18%) 50%, 
-      hsl(270 55% 22%) 100%);
-    --gradient-cloud-premium: linear-gradient(135deg,
-      hsl(var(--cloud-light) / 0.9) 0%,
-      hsl(var(--warm-pink) / 0.6) 30%,
-      hsl(var(--editorial-violet) / 0.4) 60%,
-      hsl(var(--cloud-shadow) / 0.3) 100%);
+      hsl(220 55% 18%) 25%,
+      hsl(var(--editorial-violet)) 50%, 
+      hsl(300 60% 45%) 75%,
+      hsl(var(--warm-pink)) 100%);
+    --gradient-atmospheric: 
+      radial-gradient(ellipse 120% 80% at 25% 20%, 
+        hsl(var(--atmospheric-glow) / 0.15) 0%, 
+        transparent 60%),
+      radial-gradient(ellipse 100% 60% at 75% 70%, 
+        hsl(var(--warm-pink) / 0.12) 0%, 
+        transparent 50%),
+      radial-gradient(ellipse 140% 90% at 50% 85%, 
+        hsl(var(--editorial-violet) / 0.08) 0%, 
+        transparent 70%);
+    --gradient-cloud-realistic: 
+      radial-gradient(ellipse 140% 100% at 30% 20%,
+        hsl(var(--cloud-white) / 0.95) 0%,
+        hsl(var(--cloud-highlight) / 0.8) 25%,
+        hsl(var(--cloud-depth) / 0.6) 60%,
+        hsl(var(--cloud-shadow) / 0.4) 100%);
+    --gradient-cloud-volume:
+      radial-gradient(ellipse 80% 120% at 70% 30%,
+        hsl(var(--cloud-white) / 0.9) 0%,
+        hsl(var(--cloud-highlight) / 0.7) 40%,
+        transparent 80%),
+      radial-gradient(ellipse 100% 80% at 20% 60%,
+        hsl(var(--cloud-shadow) / 0.3) 0%,
+        transparent 70%);
     
     /* Typography */
     --font-logo: 'Playfair Display', serif;
@@ -132,81 +142,90 @@
 }
 
 @layer components {
-  /* Editorial atmospheric depth background */
+  /* Cinematic atmospheric depth background */
   .atmospheric-depth {
     @apply absolute inset-0;
     background: var(--gradient-atmospheric);
-    filter: blur(0.5px);
-  }
-
-  /* Professional cloud layers for editorial depth */
-  .cloud-layer {
-    @apply absolute inset-0;
-    mix-blend-mode: normal;
-  }
-
-  .cloud-layer-back {
-    filter: blur(4px) brightness(0.6) contrast(1.2);
-    transform: scale(0.7) translateZ(-20px);
-    opacity: 0.4;
-  }
-
-  .cloud-layer-middle {
-    filter: blur(2px) brightness(0.8) contrast(1.1);
-    transform: scale(0.85) translateZ(-10px);
-    opacity: 0.65;
-  }
-
-  .cloud-layer-front {
-    filter: blur(1px) brightness(1.1) contrast(1.05);
-    transform: translateZ(0px);
-    opacity: 0.9;
-  }
-
-  /* Premium editorial clouds with volume and texture */
-  .cloud {
-    @apply absolute;
-    border-radius: 45% 55% 65% 35%;
-    animation: editorial-float 30s ease-in-out infinite;
-    background: var(--gradient-cloud-premium);
-    box-shadow: 
-      inset 0 20px 60px hsl(var(--cloud-light) / 0.4),
-      inset 0 -15px 40px hsl(var(--cloud-shadow) / 0.3),
-      0 10px 80px hsl(var(--editorial-violet) / 0.2),
-      0 0 120px hsl(var(--warm-pink) / 0.15);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cloud::before {
-    content: '';
-    @apply absolute rounded-full;
-    background: linear-gradient(145deg, 
-      hsl(var(--cloud-light) / 0.8) 0%,
-      hsl(var(--warm-pink) / 0.5) 40%,
-      transparent 70%);
-    width: 60%;
-    height: 45%;
-    top: -15%;
-    left: 20%;
-    border-radius: 60% 40% 80% 20%;
     filter: blur(1px);
     mix-blend-mode: soft-light;
   }
 
+  /* Realistic cloud layers with aerial photography depth */
+  .cloud-layer {
+    @apply absolute inset-0;
+    mix-blend-mode: normal;
+    perspective: 1000px;
+  }
+
+  .cloud-layer-back {
+    filter: blur(6px) brightness(0.5) contrast(1.3) saturate(0.8);
+    transform: scale(0.6) translateZ(-30px) rotateX(2deg);
+    opacity: 0.3;
+  }
+
+  .cloud-layer-middle {
+    filter: blur(3px) brightness(0.75) contrast(1.15) saturate(0.9);
+    transform: scale(0.8) translateZ(-15px) rotateX(1deg);
+    opacity: 0.6;
+  }
+
+  .cloud-layer-front {
+    filter: blur(1px) brightness(1.0) contrast(1.1) saturate(1.0);
+    transform: translateZ(0px);
+    opacity: 0.85;
+  }
+
+  /* Realistic volumetric clouds with aerial photography aesthetics */
+  .cloud {
+    @apply absolute;
+    border-radius: 45% 55% 40% 60%;
+    animation: cinematic-float 35s ease-in-out infinite;
+    background: var(--gradient-cloud-realistic);
+    position: relative;
+    overflow: visible;
+    transform-style: preserve-3d;
+    
+    /* Multiple shadow layers for realistic depth */
+    box-shadow: 
+      /* Inner highlight */
+      inset 20px 30px 80px hsl(var(--cloud-white) / 0.6),
+      inset -15px -20px 60px hsl(var(--cloud-shadow) / 0.4),
+      /* Outer atmospheric glow */
+      0 15px 120px hsl(var(--editorial-violet) / 0.15),
+      0 8px 80px hsl(var(--warm-pink) / 0.1),
+      /* Realistic cloud shadow on sky */
+      0 25px 100px hsl(var(--cloud-shadow) / 0.2);
+  }
+
+  /* Realistic cloud volume structure */
+  .cloud::before {
+    content: '';
+    @apply absolute;
+    background: var(--gradient-cloud-volume);
+    width: 70%;
+    height: 60%;
+    top: -20%;
+    left: 15%;
+    border-radius: 60% 40% 65% 35%;
+    filter: blur(1.5px);
+    mix-blend-mode: screen;
+    transform: rotate(-2deg);
+  }
+
   .cloud::after {
     content: '';
-    @apply absolute rounded-full;
-    background: linear-gradient(200deg, 
-      hsl(var(--editorial-violet) / 0.3) 0%,
-      hsl(var(--cloud-shadow) / 0.4) 60%,
-      transparent 100%);
-    width: 70%;
-    height: 55%;
-    bottom: -20%;
-    right: 15%;
-    border-radius: 40% 60% 30% 70%;
+    @apply absolute;
+    background: radial-gradient(ellipse 120% 80% at 40% 70%,
+      hsl(var(--cloud-shadow) / 0.4) 0%,
+      hsl(var(--cloud-depth) / 0.2) 50%,
+      transparent 80%);
+    width: 85%;
+    height: 70%;
+    bottom: -25%;
+    right: 10%;
+    border-radius: 30% 70% 25% 75%;
     filter: blur(2px);
+    mix-blend-mode: multiply;
   }
 
   /* Star layers for editorial depth */
@@ -266,53 +285,54 @@
     animation: sparkle 1.5s ease-in-out infinite;
   }
 
-  /* Editorial cloud variations with premium textures */
+  /* Realistic cloud type variations */
   .cloud-wispy {
-    background: linear-gradient(165deg, 
-      hsl(var(--cloud-light) / 0.3) 0%,
-      hsl(var(--warm-pink) / 0.4) 35%,
-      hsl(var(--editorial-violet) / 0.2) 70%,
+    background: radial-gradient(ellipse 150% 80% at 40% 30%,
+      hsl(var(--cloud-white) / 0.4) 0%,
+      hsl(var(--cloud-highlight) / 0.3) 35%,
+      hsl(var(--editorial-violet) / 0.15) 70%,
       transparent 100%);
-    filter: blur(3px);
-    border-radius: 80% 20% 60% 40%;
-    box-shadow: inset 0 15px 30px hsl(var(--cloud-light) / 0.2);
+    filter: blur(4px) contrast(1.1);
+    border-radius: 75% 25% 65% 35%;
+    box-shadow: 
+      inset 10px 20px 40px hsl(var(--cloud-white) / 0.3),
+      0 8px 60px hsl(var(--atmospheric-glow) / 0.1);
   }
 
   .cloud-fluffy {
-    background: linear-gradient(120deg, 
-      hsl(var(--cloud-light) / 0.7) 0%,
-      hsl(var(--warm-pink) / 0.6) 25%,
-      hsl(var(--editorial-violet) / 0.4) 60%,
-      hsl(var(--cloud-shadow) / 0.3) 100%);
-    border-radius: 50% 50% 50% 50%;
+    background: var(--gradient-cloud-realistic);
+    border-radius: 50% 50% 45% 55%;
+    filter: contrast(1.2) brightness(1.1);
     box-shadow: 
-      inset 0 25px 50px hsl(var(--cloud-light) / 0.5),
-      inset 0 -20px 40px hsl(var(--cloud-shadow) / 0.2),
-      0 15px 60px hsl(var(--warm-pink) / 0.2);
+      inset 25px 35px 70px hsl(var(--cloud-white) / 0.7),
+      inset -20px -25px 50px hsl(var(--cloud-shadow) / 0.3),
+      0 20px 100px hsl(var(--warm-pink) / 0.15),
+      0 12px 80px hsl(var(--editorial-violet) / 0.1);
   }
 
   .cloud-dramatic {
-    background: linear-gradient(200deg, 
-      hsl(var(--editorial-violet) / 0.5) 0%,
-      hsl(var(--warm-pink) / 0.6) 20%,
-      hsl(var(--cloud-light) / 0.4) 50%,
-      hsl(var(--cloud-shadow) / 0.3) 100%);
-    border-radius: 40% 60% 30% 70%;
+    background: radial-gradient(ellipse 130% 110% at 60% 40%,
+      hsl(var(--cloud-white) / 0.8) 0%,
+      hsl(var(--cloud-highlight) / 0.6) 20%,
+      hsl(var(--cloud-depth) / 0.5) 50%,
+      hsl(var(--cloud-shadow) / 0.4) 100%);
+    border-radius: 35% 65% 25% 75%;
+    filter: contrast(1.3) brightness(1.05);
     box-shadow: 
-      0 20px 80px hsl(var(--editorial-violet) / 0.3),
-      inset 0 30px 60px hsl(var(--warm-pink) / 0.3);
-    filter: contrast(1.1) brightness(1.1);
+      0 30px 150px hsl(var(--editorial-violet) / 0.2),
+      inset 30px 40px 80px hsl(var(--warm-pink) / 0.4),
+      inset -25px -30px 60px hsl(var(--cloud-shadow) / 0.3);
   }
 
   .cloud-subtle {
-    background: linear-gradient(75deg, 
-      hsl(var(--cloud-light) / 0.25) 0%,
-      hsl(var(--warm-pink) / 0.3) 40%,
-      hsl(var(--editorial-violet) / 0.15) 80%,
+    background: radial-gradient(ellipse 110% 90% at 35% 25%,
+      hsl(var(--cloud-white) / 0.3) 0%,
+      hsl(var(--cloud-highlight) / 0.25) 40%,
+      hsl(var(--atmospheric-glow) / 0.15) 70%,
       transparent 100%);
-    filter: blur(4px);
-    border-radius: 70% 30% 80% 20%;
-    box-shadow: inset 0 10px 25px hsl(var(--cloud-light) / 0.15);
+    filter: blur(5px) brightness(0.9);
+    border-radius: 70% 30% 75% 25%;
+    box-shadow: inset 8px 15px 30px hsl(var(--cloud-white) / 0.2);
   }
 
   /* Button variants */
@@ -354,31 +374,47 @@
   }
 }
 
-/* Enhanced animations for editorial cinematographic movement */
-@keyframes editorial-float {
+/* Cinematic aerial photography animations */
+@keyframes cinematic-float {
   0%, 100% {
     transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+    filter: brightness(1) contrast(1);
   }
-  12% {
-    transform: translateY(-18px) translateX(12px) rotate(0.8deg) scale(1.02);
+  10% {
+    transform: translateY(-12px) translateX(8px) rotate(0.3deg) scale(1.01);
+    filter: brightness(1.05) contrast(1.02);
   }
-  25% {
-    transform: translateY(-25px) translateX(-8px) rotate(-0.5deg) scale(0.98);
+  20% {
+    transform: translateY(-22px) translateX(-6px) rotate(-0.2deg) scale(0.99);
+    filter: brightness(0.98) contrast(1.01);
   }
-  38% {
-    transform: translateY(-12px) translateX(15px) rotate(0.3deg) scale(1.01);
+  30% {
+    transform: translateY(-8px) translateX(12px) rotate(0.4deg) scale(1.02);
+    filter: brightness(1.02) contrast(1.03);
+  }
+  40% {
+    transform: translateY(-28px) translateX(-4px) rotate(-0.3deg) scale(1.01);
+    filter: brightness(1.08) contrast(1.02);
   }
   50% {
-    transform: translateY(-30px) translateX(-5px) rotate(-0.8deg) scale(1.03);
+    transform: translateY(-15px) translateX(10px) rotate(0.2deg) scale(0.98);
+    filter: brightness(0.95) contrast(1.04);
   }
-  62% {
-    transform: translateY(-8px) translateX(10px) rotate(0.4deg) scale(0.99);
+  60% {
+    transform: translateY(-32px) translateX(-8px) rotate(-0.4deg) scale(1.03);
+    filter: brightness(1.06) contrast(1.01);
   }
-  75% {
-    transform: translateY(-35px) translateX(-12px) rotate(-0.3deg) scale(1.02);
+  70% {
+    transform: translateY(-18px) translateX(6px) rotate(0.3deg) scale(1.01);
+    filter: brightness(1.03) contrast(1.02);
   }
-  88% {
-    transform: translateY(-15px) translateX(8px) rotate(0.6deg) scale(1.01);
+  80% {
+    transform: translateY(-25px) translateX(-10px) rotate(-0.2deg) scale(0.99);
+    filter: brightness(0.97) contrast(1.03);
+  }
+  90% {
+    transform: translateY(-10px) translateX(4px) rotate(0.1deg) scale(1.01);
+    filter: brightness(1.04) contrast(1.01);
   }
 }
 

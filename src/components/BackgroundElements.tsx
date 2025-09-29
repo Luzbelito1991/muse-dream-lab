@@ -28,22 +28,23 @@ const BackgroundElements = () => {
   const [stars, setStars] = useState<StarElement[]>([]);
 
   useEffect(() => {
-    // Generate editorial premium clouds with cinematic depth
+    // Generate cinematic realistic clouds with aerial depth
     const cloudArray: CloudElement[] = [];
     const cloudTypes: CloudElement['type'][] = ['wispy', 'fluffy', 'dramatic', 'subtle'];
     const layers: CloudElement['layer'][] = ['back', 'middle', 'front'];
     
-    for (let i = 0; i < 8; i++) { // Reduced for premium aesthetic
+    // Create fewer, more substantial clouds for realism
+    for (let i = 0; i < 6; i++) {
       cloudArray.push({
         id: i,
-        x: Math.random() * 110 - 5, // Slightly less spread for focus
-        y: Math.random() * 85 + 5, // Keep away from very top/bottom
-        size: 120 + Math.random() * 200, // Larger, more substantial clouds
-        duration: 30 + Math.random() * 20, // Slower, more majestic movement
-        delay: Math.random() * 10,
+        x: Math.random() * 100, // Keep within viewport for focus
+        y: 15 + Math.random() * 70, // Avoid extreme edges
+        size: 150 + Math.random() * 250, // Larger, more realistic proportions
+        duration: 35 + Math.random() * 15, // Slower, more majestic
+        delay: Math.random() * 12,
         type: cloudTypes[Math.floor(Math.random() * cloudTypes.length)],
         layer: layers[Math.floor(Math.random() * layers.length)],
-        opacity: 0.6 + Math.random() * 0.3, // Higher base opacity for visibility
+        opacity: 0.7 + Math.random() * 0.25, // Higher visibility for definition
       });
     }
     setClouds(cloudArray);
