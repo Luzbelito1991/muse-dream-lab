@@ -115,45 +115,167 @@
 }
 
 @layer components {
-  /* Dreamy floating clouds */
-  .cloud {
-    @apply absolute opacity-60;
-    background: hsl(var(--dream-pink));
-    border-radius: 100px;
+  /* Atmospheric depth background */
+  .atmospheric-depth {
+    @apply absolute inset-0;
+    background: radial-gradient(circle at 30% 20%, 
+      hsl(var(--dream-violet) / 0.15) 0%, 
+      transparent 50%),
+      radial-gradient(circle at 80% 60%, 
+      hsl(var(--dream-turquoise) / 0.1) 0%, 
+      transparent 40%),
+      linear-gradient(135deg, 
+      hsl(var(--dream-purple) / 0.8) 0%, 
+      hsl(var(--dream-purple) / 0.9) 50%, 
+      hsl(var(--dream-purple) / 0.95) 100%);
+  }
+
+  /* Star layers for depth */
+  .star-layer {
+    @apply absolute inset-0;
+  }
+
+  .star-layer-1 {
+    transform: translateZ(0);
+    filter: blur(0.5px);
+  }
+
+  .star-layer-2 {
+    transform: translateZ(10px);
+  }
+
+  .star-layer-3 {
+    transform: translateZ(20px);
+    filter: brightness(1.2);
+  }
+
+  /* Enhanced star types */
+  .star {
+    @apply absolute rounded-full;
+    background: radial-gradient(circle, hsl(var(--dream-star)), hsl(var(--dream-star) / 0.8));
+    animation: twinkle 3s ease-in-out infinite;
+    box-shadow: 0 0 6px hsl(var(--dream-star) / 0.6);
+  }
+
+  .star-dim {
+    background: hsl(var(--dream-star) / 0.4);
+    box-shadow: 0 0 2px hsl(var(--dream-star) / 0.3);
+    animation: subtle-twinkle 4s ease-in-out infinite;
+  }
+
+  .star-medium {
+    background: radial-gradient(circle, hsl(var(--dream-star)), hsl(var(--dream-star) / 0.7));
+    box-shadow: 0 0 4px hsl(var(--dream-star) / 0.5);
+  }
+
+  .star-bright {
+    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--dream-star)));
+    box-shadow: 0 0 8px hsl(var(--dream-pearl) / 0.8), 0 0 16px hsl(var(--dream-star) / 0.4);
+    animation: bright-twinkle 2s ease-in-out infinite;
+  }
+
+  .star-sparkle {
+    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--dream-lavender)));
+    box-shadow: 0 0 12px hsl(var(--dream-pearl) / 0.9), 
+                0 0 24px hsl(var(--dream-lavender) / 0.6),
+                0 0 36px hsl(var(--dream-violet) / 0.3);
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  /* Cloud layers for depth */
+  .cloud-layer {
+    @apply absolute inset-0;
+  }
+
+  .cloud-layer-back {
+    filter: blur(2px) brightness(0.7);
+    transform: scale(0.8);
+  }
+
+  .cloud-layer-middle {
     filter: blur(1px);
-    animation: float 20s ease-in-out infinite;
+    transform: scale(0.9);
+  }
+
+  .cloud-layer-front {
+    filter: blur(0.5px) brightness(1.1);
+  }
+
+  /* Cinematic cloud types */
+  .cloud {
+    @apply absolute;
+    border-radius: 60% 40% 70% 30%;
+    filter: blur(1.5px);
+    animation: realistic-float 25s ease-in-out infinite;
+    background: linear-gradient(135deg, 
+      hsl(var(--dream-pink) / 0.6) 0%,
+      hsl(var(--dream-pearl) / 0.3) 30%,
+      hsl(var(--dream-turquoise) / 0.2) 70%,
+      hsl(var(--dream-pink) / 0.4) 100%);
+    box-shadow: inset 0 0 50px hsl(var(--dream-pearl) / 0.2),
+                0 0 30px hsl(var(--dream-pink) / 0.3);
   }
 
   .cloud::before,
   .cloud::after {
     content: '';
-    @apply absolute bg-inherit rounded-full;
+    @apply absolute rounded-full;
+    background: inherit;
+    filter: blur(0.5px);
   }
 
   .cloud::before {
-    width: 50px;
-    height: 50px;
-    top: -25px;
-    left: 10px;
+    width: 40%;
+    height: 40%;
+    top: -20%;
+    left: 15%;
+    border-radius: 50% 60% 40% 70%;
   }
 
   .cloud::after {
-    width: 100px;
-    height: 80px;
-    top: -45px;
-    right: 15px;
+    width: 60%;
+    height: 50%;
+    top: -25%;
+    right: 10%;
+    border-radius: 70% 30% 60% 40%;
   }
 
-  /* Twinkling stars */
-  .star {
-    @apply absolute rounded-full;
-    background: hsl(var(--dream-star));
-    animation: twinkle 3s ease-in-out infinite;
+  /* Specific cloud types */
+  .cloud-wispy {
+    background: linear-gradient(45deg, 
+      hsl(var(--dream-pearl) / 0.2) 0%,
+      hsl(var(--dream-pink) / 0.3) 50%,
+      hsl(var(--dream-turquoise) / 0.1) 100%);
+    filter: blur(2px);
+    border-radius: 80% 20% 60% 40%;
   }
 
-  .star-bright {
-    background: hsl(var(--dream-pearl));
-    animation: twinkle 2s ease-in-out infinite;
+  .cloud-fluffy {
+    background: linear-gradient(135deg, 
+      hsl(var(--dream-pearl) / 0.4) 0%,
+      hsl(var(--dream-pink) / 0.5) 40%,
+      hsl(var(--dream-lavender) / 0.3) 100%);
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: inset 0 0 40px hsl(var(--dream-pearl) / 0.4);
+  }
+
+  .cloud-dramatic {
+    background: linear-gradient(180deg, 
+      hsl(var(--dream-violet) / 0.3) 0%,
+      hsl(var(--dream-pink) / 0.4) 30%,
+      hsl(var(--dream-turquoise) / 0.3) 70%,
+      hsl(var(--dream-pearl) / 0.2) 100%);
+    border-radius: 40% 60% 30% 70%;
+    box-shadow: 0 0 40px hsl(var(--dream-violet) / 0.4);
+  }
+
+  .cloud-subtle {
+    background: linear-gradient(90deg, 
+      hsl(var(--dream-pink) / 0.2) 0%,
+      hsl(var(--dream-pearl) / 0.15) 50%,
+      hsl(var(--dream-turquoise) / 0.1) 100%);
+    filter: blur(3px);
+    border-radius: 70% 30% 80% 20%;
   }
 
   /* Button variants */
@@ -195,28 +317,85 @@
   }
 }
 
-@keyframes float {
+/* Enhanced animations for realistic movement */
+@keyframes realistic-float {
   0%, 100% {
-    transform: translateY(0px) translateX(0px);
+    transform: translateY(0px) translateX(0px) rotate(0deg);
   }
-  25% {
-    transform: translateY(-20px) translateX(10px);
+  15% {
+    transform: translateY(-15px) translateX(8px) rotate(0.5deg);
   }
-  50% {
-    transform: translateY(-10px) translateX(-10px);
+  30% {
+    transform: translateY(-8px) translateX(-12px) rotate(-0.3deg);
+  }
+  45% {
+    transform: translateY(-20px) translateX(5px) rotate(0.2deg);
+  }
+  60% {
+    transform: translateY(-12px) translateX(-8px) rotate(-0.4deg);
   }
   75% {
-    transform: translateY(-25px) translateX(5px);
+    transform: translateY(-25px) translateX(10px) rotate(0.3deg);
+  }
+  90% {
+    transform: translateY(-5px) translateX(-5px) rotate(-0.1deg);
   }
 }
 
 @keyframes twinkle {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scale(1);
   }
   50% {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.3);
+  }
+}
+
+@keyframes subtle-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+@keyframes bright-twinkle {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1.2);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.2) rotate(90deg);
+    filter: brightness(1.5);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.5) rotate(180deg);
+    filter: brightness(1.8);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.3) rotate(270deg);
+    filter: brightness(1.4);
   }
 }
