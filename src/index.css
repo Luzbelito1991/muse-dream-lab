@@ -6,51 +6,68 @@
 
 @layer base {
   :root {
-    /* Core dreamy palette */
-    --dream-purple: 272 55% 23%; /* #3C1A5B */
-    --dream-turquoise: 178 40% 67%; /* #4EC6C1 */
-    --dream-peach: 23 80% 73%; /* #F7A97F */
-    --dream-pink: 336 45% 92%; /* #FADADD */
+    /* Editorial cinematographic palette */
+    --night-blue: 225 50% 15%; /* Deep night blue */
+    --editorial-violet: 270 60% 25%; /* Editorial violet */
+    --warm-pink: 340 70% 65%; /* Warm editorial pink */
+    --cloud-light: 220 30% 85%; /* Soft cloud highlights */
+    --cloud-shadow: 240 40% 20%; /* Deep cloud shadows */
     --dream-pearl: 0 0% 100%; /* #FFFFFF */
     --dream-star: 45 100% 80%; /* #FFE9A3 */
-    --dream-violet: 253 74% 59%; /* #7F5AF0 */
-    --dream-lavender: 253 100% 82%; /* #BFA3FF */
+    --accent-glow: 280 80% 70%; /* Premium glow */
 
     /* Semantic colors */
-    --background: var(--dream-purple);
+    --background: var(--night-blue);
     --foreground: 0 0% 100%;
 
-    --card: 272 55% 23% / 0.8;
+    --card: 225 50% 15% / 0.8;
     --card-foreground: 0 0% 100%;
 
-    --popover: 272 55% 23%;
+    --popover: 225 50% 15%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: var(--dream-violet);
+    --primary: var(--editorial-violet);
     --primary-foreground: 0 0% 100%;
 
-    --secondary: var(--dream-lavender);
-    --secondary-foreground: 272 55% 23%;
+    --secondary: var(--warm-pink);
+    --secondary-foreground: 225 50% 15%;
 
-    --muted: 272 55% 23% / 0.6;
+    --muted: 225 50% 15% / 0.6;
     --muted-foreground: 0 0% 85%;
 
-    --accent: var(--dream-turquoise);
-    --accent-foreground: 272 55% 23%;
+    --accent: var(--accent-glow);
+    --accent-foreground: 225 50% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 100% / 0.2;
     --input: 0 0% 100% / 0.1;
-    --ring: var(--dream-lavender);
+    --ring: var(--warm-pink);
 
     --radius: 1rem;
 
-    /* Custom gradients */
-    --gradient-main: linear-gradient(135deg, hsl(var(--dream-purple)) 0%, hsl(var(--dream-turquoise)) 50%, hsl(var(--dream-peach)) 100%);
-    --gradient-button: linear-gradient(135deg, hsl(var(--dream-violet)), hsl(var(--dream-lavender)));
-    --gradient-card: linear-gradient(135deg, hsl(272 55% 23% / 0.3), hsl(178 40% 67% / 0.2));
+    /* Editorial cinematographic gradients */
+    --gradient-main: linear-gradient(135deg, 
+      hsl(var(--night-blue)) 0%, 
+      hsl(var(--editorial-violet)) 40%, 
+      hsl(var(--warm-pink)) 85%, 
+      hsl(340 60% 75%) 100%);
+    --gradient-atmospheric: radial-gradient(ellipse at 30% 20%, 
+      hsl(var(--editorial-violet) / 0.4) 0%, 
+      transparent 70%),
+      radial-gradient(ellipse at 80% 60%, 
+      hsl(var(--warm-pink) / 0.3) 0%, 
+      transparent 60%),
+      linear-gradient(180deg, 
+      hsl(var(--night-blue)) 0%, 
+      hsl(225 45% 18%) 50%, 
+      hsl(270 55% 22%) 100%);
+    --gradient-cloud-premium: linear-gradient(135deg,
+      hsl(var(--cloud-light) / 0.9) 0%,
+      hsl(var(--warm-pink) / 0.6) 30%,
+      hsl(var(--editorial-violet) / 0.4) 60%,
+      hsl(var(--cloud-shadow) / 0.3) 100%);
     
     /* Typography */
     --font-logo: 'Playfair Display', serif;
@@ -115,41 +132,108 @@
 }
 
 @layer components {
-  /* Atmospheric depth background */
+  /* Editorial atmospheric depth background */
   .atmospheric-depth {
     @apply absolute inset-0;
-    background: radial-gradient(circle at 30% 20%, 
-      hsl(var(--dream-violet) / 0.15) 0%, 
-      transparent 50%),
-      radial-gradient(circle at 80% 60%, 
-      hsl(var(--dream-turquoise) / 0.1) 0%, 
-      transparent 40%),
-      linear-gradient(135deg, 
-      hsl(var(--dream-purple) / 0.8) 0%, 
-      hsl(var(--dream-purple) / 0.9) 50%, 
-      hsl(var(--dream-purple) / 0.95) 100%);
+    background: var(--gradient-atmospheric);
+    filter: blur(0.5px);
   }
 
-  /* Star layers for depth */
+  /* Professional cloud layers for editorial depth */
+  .cloud-layer {
+    @apply absolute inset-0;
+    mix-blend-mode: normal;
+  }
+
+  .cloud-layer-back {
+    filter: blur(4px) brightness(0.6) contrast(1.2);
+    transform: scale(0.7) translateZ(-20px);
+    opacity: 0.4;
+  }
+
+  .cloud-layer-middle {
+    filter: blur(2px) brightness(0.8) contrast(1.1);
+    transform: scale(0.85) translateZ(-10px);
+    opacity: 0.65;
+  }
+
+  .cloud-layer-front {
+    filter: blur(1px) brightness(1.1) contrast(1.05);
+    transform: translateZ(0px);
+    opacity: 0.9;
+  }
+
+  /* Premium editorial clouds with volume and texture */
+  .cloud {
+    @apply absolute;
+    border-radius: 45% 55% 65% 35%;
+    animation: editorial-float 30s ease-in-out infinite;
+    background: var(--gradient-cloud-premium);
+    box-shadow: 
+      inset 0 20px 60px hsl(var(--cloud-light) / 0.4),
+      inset 0 -15px 40px hsl(var(--cloud-shadow) / 0.3),
+      0 10px 80px hsl(var(--editorial-violet) / 0.2),
+      0 0 120px hsl(var(--warm-pink) / 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cloud::before {
+    content: '';
+    @apply absolute rounded-full;
+    background: linear-gradient(145deg, 
+      hsl(var(--cloud-light) / 0.8) 0%,
+      hsl(var(--warm-pink) / 0.5) 40%,
+      transparent 70%);
+    width: 60%;
+    height: 45%;
+    top: -15%;
+    left: 20%;
+    border-radius: 60% 40% 80% 20%;
+    filter: blur(1px);
+    mix-blend-mode: soft-light;
+  }
+
+  .cloud::after {
+    content: '';
+    @apply absolute rounded-full;
+    background: linear-gradient(200deg, 
+      hsl(var(--editorial-violet) / 0.3) 0%,
+      hsl(var(--cloud-shadow) / 0.4) 60%,
+      transparent 100%);
+    width: 70%;
+    height: 55%;
+    bottom: -20%;
+    right: 15%;
+    border-radius: 40% 60% 30% 70%;
+    filter: blur(2px);
+  }
+
+  /* Star layers for editorial depth */
   .star-layer {
     @apply absolute inset-0;
+    mix-blend-mode: screen;
   }
 
   .star-layer-1 {
     transform: translateZ(0);
-    filter: blur(0.5px);
+    filter: blur(0.5px) brightness(0.8);
+    opacity: 0.6;
   }
 
   .star-layer-2 {
     transform: translateZ(10px);
+    filter: brightness(0.9);
+    opacity: 0.8;
   }
 
   .star-layer-3 {
     transform: translateZ(20px);
     filter: brightness(1.2);
+    opacity: 1;
   }
 
-  /* Enhanced star types */
+  /* Premium star types */
   .star {
     @apply absolute rounded-full;
     background: radial-gradient(circle, hsl(var(--dream-star)), hsl(var(--dream-star) / 0.8));
@@ -175,107 +259,60 @@
   }
 
   .star-sparkle {
-    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--dream-lavender)));
+    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--accent-glow)));
     box-shadow: 0 0 12px hsl(var(--dream-pearl) / 0.9), 
-                0 0 24px hsl(var(--dream-lavender) / 0.6),
-                0 0 36px hsl(var(--dream-violet) / 0.3);
+                0 0 24px hsl(var(--accent-glow) / 0.6),
+                0 0 36px hsl(var(--editorial-violet) / 0.3);
     animation: sparkle 1.5s ease-in-out infinite;
   }
 
-  /* Cloud layers for depth */
-  .cloud-layer {
-    @apply absolute inset-0;
-  }
-
-  .cloud-layer-back {
-    filter: blur(2px) brightness(0.7);
-    transform: scale(0.8);
-  }
-
-  .cloud-layer-middle {
-    filter: blur(1px);
-    transform: scale(0.9);
-  }
-
-  .cloud-layer-front {
-    filter: blur(0.5px) brightness(1.1);
-  }
-
-  /* Cinematic cloud types */
-  .cloud {
-    @apply absolute;
-    border-radius: 60% 40% 70% 30%;
-    filter: blur(1.5px);
-    animation: realistic-float 25s ease-in-out infinite;
-    background: linear-gradient(135deg, 
-      hsl(var(--dream-pink) / 0.6) 0%,
-      hsl(var(--dream-pearl) / 0.3) 30%,
-      hsl(var(--dream-turquoise) / 0.2) 70%,
-      hsl(var(--dream-pink) / 0.4) 100%);
-    box-shadow: inset 0 0 50px hsl(var(--dream-pearl) / 0.2),
-                0 0 30px hsl(var(--dream-pink) / 0.3);
-  }
-
-  .cloud::before,
-  .cloud::after {
-    content: '';
-    @apply absolute rounded-full;
-    background: inherit;
-    filter: blur(0.5px);
-  }
-
-  .cloud::before {
-    width: 40%;
-    height: 40%;
-    top: -20%;
-    left: 15%;
-    border-radius: 50% 60% 40% 70%;
-  }
-
-  .cloud::after {
-    width: 60%;
-    height: 50%;
-    top: -25%;
-    right: 10%;
-    border-radius: 70% 30% 60% 40%;
-  }
-
-  /* Specific cloud types */
+  /* Editorial cloud variations with premium textures */
   .cloud-wispy {
-    background: linear-gradient(45deg, 
-      hsl(var(--dream-pearl) / 0.2) 0%,
-      hsl(var(--dream-pink) / 0.3) 50%,
-      hsl(var(--dream-turquoise) / 0.1) 100%);
-    filter: blur(2px);
+    background: linear-gradient(165deg, 
+      hsl(var(--cloud-light) / 0.3) 0%,
+      hsl(var(--warm-pink) / 0.4) 35%,
+      hsl(var(--editorial-violet) / 0.2) 70%,
+      transparent 100%);
+    filter: blur(3px);
     border-radius: 80% 20% 60% 40%;
+    box-shadow: inset 0 15px 30px hsl(var(--cloud-light) / 0.2);
   }
 
   .cloud-fluffy {
-    background: linear-gradient(135deg, 
-      hsl(var(--dream-pearl) / 0.4) 0%,
-      hsl(var(--dream-pink) / 0.5) 40%,
-      hsl(var(--dream-lavender) / 0.3) 100%);
+    background: linear-gradient(120deg, 
+      hsl(var(--cloud-light) / 0.7) 0%,
+      hsl(var(--warm-pink) / 0.6) 25%,
+      hsl(var(--editorial-violet) / 0.4) 60%,
+      hsl(var(--cloud-shadow) / 0.3) 100%);
     border-radius: 50% 50% 50% 50%;
-    box-shadow: inset 0 0 40px hsl(var(--dream-pearl) / 0.4);
+    box-shadow: 
+      inset 0 25px 50px hsl(var(--cloud-light) / 0.5),
+      inset 0 -20px 40px hsl(var(--cloud-shadow) / 0.2),
+      0 15px 60px hsl(var(--warm-pink) / 0.2);
   }
 
   .cloud-dramatic {
-    background: linear-gradient(180deg, 
-      hsl(var(--dream-violet) / 0.3) 0%,
-      hsl(var(--dream-pink) / 0.4) 30%,
-      hsl(var(--dream-turquoise) / 0.3) 70%,
-      hsl(var(--dream-pearl) / 0.2) 100%);
+    background: linear-gradient(200deg, 
+      hsl(var(--editorial-violet) / 0.5) 0%,
+      hsl(var(--warm-pink) / 0.6) 20%,
+      hsl(var(--cloud-light) / 0.4) 50%,
+      hsl(var(--cloud-shadow) / 0.3) 100%);
     border-radius: 40% 60% 30% 70%;
-    box-shadow: 0 0 40px hsl(var(--dream-violet) / 0.4);
+    box-shadow: 
+      0 20px 80px hsl(var(--editorial-violet) / 0.3),
+      inset 0 30px 60px hsl(var(--warm-pink) / 0.3);
+    filter: contrast(1.1) brightness(1.1);
   }
 
   .cloud-subtle {
-    background: linear-gradient(90deg, 
-      hsl(var(--dream-pink) / 0.2) 0%,
-      hsl(var(--dream-pearl) / 0.15) 50%,
-      hsl(var(--dream-turquoise) / 0.1) 100%);
-    filter: blur(3px);
+    background: linear-gradient(75deg, 
+      hsl(var(--cloud-light) / 0.25) 0%,
+      hsl(var(--warm-pink) / 0.3) 40%,
+      hsl(var(--editorial-violet) / 0.15) 80%,
+      transparent 100%);
+    filter: blur(4px);
     border-radius: 70% 30% 80% 20%;
+    box-shadow: inset 0 10px 25px hsl(var(--cloud-light) / 0.15);
   }
 
   /* Button variants */
@@ -317,7 +354,34 @@
   }
 }
 
-/* Enhanced animations for realistic movement */
+/* Enhanced animations for editorial cinematographic movement */
+@keyframes editorial-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+  12% {
+    transform: translateY(-18px) translateX(12px) rotate(0.8deg) scale(1.02);
+  }
+  25% {
+    transform: translateY(-25px) translateX(-8px) rotate(-0.5deg) scale(0.98);
+  }
+  38% {
+    transform: translateY(-12px) translateX(15px) rotate(0.3deg) scale(1.01);
+  }
+  50% {
+    transform: translateY(-30px) translateX(-5px) rotate(-0.8deg) scale(1.03);
+  }
+  62% {
+    transform: translateY(-8px) translateX(10px) rotate(0.4deg) scale(0.99);
+  }
+  75% {
+    transform: translateY(-35px) translateX(-12px) rotate(-0.3deg) scale(1.02);
+  }
+  88% {
+    transform: translateY(-15px) translateX(8px) rotate(0.6deg) scale(1.01);
+  }
+}
+
 @keyframes realistic-float {
   0%, 100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);

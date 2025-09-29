@@ -28,22 +28,22 @@ const BackgroundElements = () => {
   const [stars, setStars] = useState<StarElement[]>([]);
 
   useEffect(() => {
-    // Generate artistic clouds with different types and layers
+    // Generate editorial premium clouds with cinematic depth
     const cloudArray: CloudElement[] = [];
     const cloudTypes: CloudElement['type'][] = ['wispy', 'fluffy', 'dramatic', 'subtle'];
     const layers: CloudElement['layer'][] = ['back', 'middle', 'front'];
     
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 8; i++) { // Reduced for premium aesthetic
       cloudArray.push({
         id: i,
-        x: Math.random() * 120 - 10, // Allow clouds to extend beyond viewport
-        y: Math.random() * 90,
-        size: 80 + Math.random() * 160,
-        duration: 20 + Math.random() * 25,
-        delay: Math.random() * 8,
+        x: Math.random() * 110 - 5, // Slightly less spread for focus
+        y: Math.random() * 85 + 5, // Keep away from very top/bottom
+        size: 120 + Math.random() * 200, // Larger, more substantial clouds
+        duration: 30 + Math.random() * 20, // Slower, more majestic movement
+        delay: Math.random() * 10,
         type: cloudTypes[Math.floor(Math.random() * cloudTypes.length)],
         layer: layers[Math.floor(Math.random() * layers.length)],
-        opacity: 0.3 + Math.random() * 0.4,
+        opacity: 0.6 + Math.random() * 0.3, // Higher base opacity for visibility
       });
     }
     setClouds(cloudArray);
