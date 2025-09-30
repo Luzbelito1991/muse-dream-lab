@@ -6,78 +6,90 @@
 
 @layer base {
   :root {
-    /* Cinematic aerial photography palette */
-    --night-blue: 220 65% 12%; /* Deep cinematic night */
-    --editorial-violet: 265 45% 35%; /* Rich violet */
-    --warm-pink: 335 85% 70%; /* Warm sunset pink */
-    --cloud-white: 210 15% 95%; /* Pure cloud white */
-    --cloud-highlight: 45 25% 88%; /* Warm cloud highlights */
-    --cloud-shadow: 225 35% 25%; /* Cool cloud shadows */
-    --cloud-depth: 240 25% 40%; /* Mid-tone depth */
-    --atmospheric-glow: 280 60% 65%; /* Atmospheric lighting */
+    /* DreamFrame Color Palette - Clean & Elegant */
+    --midnight-blue: 240 44% 30%; /* #191970 converted to HSL */
+    --burnt-orange: 30 52% 58%; /* #CD853F converted to HSL */
+    --lavender: 240 67% 94%; /* #E6E6FA converted to HSL */
+    --pale-purple: 260 47% 75%; /* #BAA1E4 converted to HSL */
+    --terracotta: 25 48% 39%; /* #A0522D converted to HSL */
+    --pure-white: 0 0% 100%; /* #FFFFFF */
+    
+    /* Cloud colors for ethereal background */
+    --cloud-white: var(--lavender);
+    --cloud-highlight: 240 60% 90%;
+    --cloud-shadow: 240 35% 70%;
+    --cloud-depth: 245 30% 75%;
 
     /* Semantic colors */
-    --background: var(--night-blue);
-    --foreground: 0 0% 100%;
+    --background: var(--midnight-blue);
+    --foreground: var(--pure-white);
 
-    --card: 225 50% 15% / 0.8;
-    --card-foreground: 0 0% 100%;
+    --card: 240 44% 30% / 0.6;
+    --card-foreground: var(--pure-white);
 
-    --popover: 225 50% 15%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 240 44% 30%;
+    --popover-foreground: var(--pure-white);
 
-    --primary: var(--editorial-violet);
-    --primary-foreground: 0 0% 100%;
+    --primary: var(--pale-purple);
+    --primary-foreground: var(--pure-white);
 
-    --secondary: var(--warm-pink);
-    --secondary-foreground: 225 50% 15%;
+    --secondary: var(--terracotta);
+    --secondary-foreground: var(--pure-white);
 
-    --muted: 225 50% 15% / 0.6;
-    --muted-foreground: 0 0% 85%;
+    --muted: 240 44% 30% / 0.5;
+    --muted-foreground: 0 0% 90%;
 
-    --accent: var(--accent-glow);
-    --accent-foreground: 225 50% 15%;
+    --accent: var(--pale-purple);
+    --accent-foreground: var(--pure-white);
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: var(--pure-white);
 
-    --border: 0 0% 100% / 0.2;
+    --border: 0 0% 100% / 0.15;
     --input: 0 0% 100% / 0.1;
-    --ring: var(--warm-pink);
+    --ring: var(--pale-purple);
 
     --radius: 1rem;
 
-    /* Cinematic smooth gradients */
+    /* DreamFrame Gradient System */
     --gradient-main: linear-gradient(180deg, 
-      hsl(var(--night-blue)) 0%, 
-      hsl(220 55% 18%) 25%,
-      hsl(var(--editorial-violet)) 50%, 
-      hsl(300 60% 45%) 75%,
-      hsl(var(--warm-pink)) 100%);
+      hsl(var(--midnight-blue)) 0%, 
+      hsl(245 50% 40%) 30%,
+      hsl(270 40% 45%) 50%, 
+      hsl(20 60% 55%) 80%,
+      hsl(var(--burnt-orange)) 100%);
+    
     --gradient-atmospheric: 
-      radial-gradient(ellipse 120% 80% at 25% 20%, 
-        hsl(var(--atmospheric-glow) / 0.15) 0%, 
-        transparent 60%),
-      radial-gradient(ellipse 100% 60% at 75% 70%, 
-        hsl(var(--warm-pink) / 0.12) 0%, 
+      radial-gradient(ellipse 100% 70% at 50% 20%, 
+        hsl(var(--pale-purple) / 0.08) 0%, 
         transparent 50%),
-      radial-gradient(ellipse 140% 90% at 50% 85%, 
-        hsl(var(--editorial-violet) / 0.08) 0%, 
-        transparent 70%);
+      radial-gradient(ellipse 120% 80% at 50% 80%, 
+        hsl(var(--burnt-orange) / 0.15) 0%, 
+        transparent 60%);
+    
     --gradient-cloud-realistic: 
       radial-gradient(ellipse 140% 100% at 30% 20%,
-        hsl(var(--cloud-white) / 0.95) 0%,
-        hsl(var(--cloud-highlight) / 0.8) 25%,
-        hsl(var(--cloud-depth) / 0.6) 60%,
-        hsl(var(--cloud-shadow) / 0.4) 100%);
+        hsl(var(--lavender) / 0.7) 0%,
+        hsl(var(--cloud-highlight) / 0.5) 25%,
+        hsl(var(--cloud-depth) / 0.3) 60%,
+        hsl(var(--cloud-shadow) / 0.2) 100%);
+    
     --gradient-cloud-volume:
       radial-gradient(ellipse 80% 120% at 70% 30%,
-        hsl(var(--cloud-white) / 0.9) 0%,
-        hsl(var(--cloud-highlight) / 0.7) 40%,
+        hsl(var(--lavender) / 0.6) 0%,
+        hsl(var(--cloud-highlight) / 0.4) 40%,
         transparent 80%),
       radial-gradient(ellipse 100% 80% at 20% 60%,
-        hsl(var(--cloud-shadow) / 0.3) 0%,
+        hsl(var(--cloud-shadow) / 0.2) 0%,
         transparent 70%);
+    
+    --gradient-button: linear-gradient(135deg, 
+      hsl(var(--pale-purple)) 0%, 
+      hsl(260 50% 70%) 100%);
+    
+    --gradient-button-secondary: linear-gradient(135deg, 
+      hsl(var(--terracotta)) 0%, 
+      hsl(20 52% 45%) 100%);
     
     /* Typography */
     --font-logo: 'Playfair Display', serif;
@@ -142,12 +154,22 @@
 }
 
 @layer components {
-  /* Cinematic atmospheric depth background */
+  /* Clean atmospheric depth background with lens flare effect */
   .atmospheric-depth {
     @apply absolute inset-0;
     background: var(--gradient-atmospheric);
-    filter: blur(1px);
-    mix-blend-mode: soft-light;
+    filter: blur(2px);
+    mix-blend-mode: screen;
+  }
+  
+  /* Starry glow effect near bottom */
+  .atmospheric-depth::after {
+    content: '';
+    @apply absolute inset-0;
+    background: radial-gradient(ellipse 80% 40% at 50% 95%,
+      hsl(var(--burnt-orange) / 0.2) 0%,
+      transparent 60%);
+    filter: blur(40px);
   }
 
   /* Hyper-realistic cloud layers with cinematic aerial photography depth */
@@ -385,25 +407,37 @@
       inset -6px -10px 22px hsl(var(--cloud-shadow) / 0.15);
   }
 
-  /* Button variants */
+  /* Button variants - Clean & Elegant */
   .btn-dream {
-    @apply px-8 py-4 rounded-full font-heading font-semibold uppercase tracking-wider text-white;
+    @apply px-8 py-4 rounded-full font-heading font-semibold text-base text-white;
     background: var(--gradient-button);
     transition: var(--transition-smooth);
-    box-shadow: 0 8px 25px hsl(var(--dream-violet) / 0.3);
+    box-shadow: 0 4px 16px hsl(var(--pale-purple) / 0.3);
   }
 
   .btn-dream:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px hsl(var(--dream-violet) / 0.4);
+    box-shadow: 0 6px 24px hsl(var(--pale-purple) / 0.4);
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full font-heading font-semibold text-base text-white;
+    background: var(--gradient-button-secondary);
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 16px hsl(var(--terracotta) / 0.3);
   }
 
-  /* Glass morphism card */
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px hsl(var(--terracotta) / 0.4);
+  }
+
+  /* Glass morphism card - Clean style */
   .glass-card {
-    background: var(--gradient-card);
-    backdrop-filter: blur(20px);
+    background: hsl(var(--card));
+    backdrop-filter: blur(24px);
     border: 1px solid hsl(var(--border));
-    @apply rounded-3xl;
+    @apply rounded-3xl shadow-lg;
   }
 
   /* Typography classes */

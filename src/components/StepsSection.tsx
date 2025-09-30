@@ -1,69 +1,48 @@
 import { Edit3, Palette, ImageIcon } from "lucide-react";
 
 const StepsSection = () => {
-  const steps = [
+  const features = [
     {
       icon: Edit3,
-      title: "Contá tu sueño",
-      description: "Escribí lo que recordás al despertar. Cada detalle, cada emoción, cada imagen que quedó en tu memoria.",
-      color: "from-dream-violet to-dream-lavender"
+      title: "Describe",
+      description: "Write down what you dreamed"
     },
     {
       icon: Palette,
-      title: "Lo interpretamos",
-      description: "Nuestra IA traduce emociones y símbolos en arte visual. Cada sueño se convierte en una obra única.",
-      color: "from-dream-turquoise to-dream-violet"
+      title: "Generate",
+      description: "AI interprets your vision"
     },
     {
       icon: ImageIcon,
-      title: "Recibí tu imagen",
-      description: "Obtenés una representación visual única de tu sueño, lista para guardar, compartir o contemplar.",
-      color: "from-dream-peach to-dream-turquoise"
+      title: "Receive",
+      description: "Get your unique dream art"
     }
   ];
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Title */}
-        <div className="text-center mb-16">
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-            ¿Cómo funciona la magia?
-          </h3>
-          <p className="font-body text-lg text-white/80 max-w-2xl mx-auto">
-            En tres simples pasos transformamos tus experiencias oníricas en arte visual
-          </p>
-        </div>
-
-        {/* Steps Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Three Column Feature Icons */}
+        <div className="grid md:grid-cols-3 gap-12">
+          {features.map((feature, index) => (
             <div
               key={index}
-              className="group glass-card p-8 text-center hover:scale-105 transition-all duration-500"
+              className="text-center space-y-4"
             >
-              {/* Icon with gradient background */}
-              <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${step.color} mb-6`}>
-                <step.icon className="w-8 h-8 text-white" />
-              </div>
-
-              {/* Step number */}
-              <div className="text-sm font-heading font-semibold text-dream-lavender mb-2 tracking-wider">
-                PASO {index + 1}
+              {/* Minimalist Icon */}
+              <div className="inline-flex p-4 mb-2">
+                <feature.icon className="w-12 h-12 text-white stroke-[1.5]" />
               </div>
 
               {/* Title */}
-              <h4 className="font-heading text-xl font-bold text-white mb-4">
-                {step.title}
-              </h4>
+              <h3 className="font-logo text-2xl font-bold text-white">
+                {feature.title}
+              </h3>
 
               {/* Description */}
-              <p className="font-body text-white/80 leading-relaxed">
-                {step.description}
+              <p className="font-body text-white/80 text-base">
+                {feature.description}
               </p>
-
-              {/* Decorative line */}
-              <div className={`w-12 h-1 bg-gradient-to-r ${step.color} mx-auto mt-6 rounded-full`}></div>
             </div>
           ))}
         </div>
