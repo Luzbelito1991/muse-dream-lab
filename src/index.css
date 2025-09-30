@@ -304,33 +304,33 @@
   /* Premium star types */
   .star {
     @apply absolute rounded-full;
-    background: radial-gradient(circle, hsl(var(--dream-star)), hsl(var(--dream-star) / 0.8));
+    background: radial-gradient(circle, hsl(var(--pure-white)), hsl(var(--pure-white) / 0.8));
     animation: twinkle 3s ease-in-out infinite;
-    box-shadow: 0 0 6px hsl(var(--dream-star) / 0.6);
+    box-shadow: 0 0 8px hsl(var(--pure-white) / 0.7), 0 0 4px hsl(var(--lavender) / 0.5);
   }
 
   .star-dim {
-    background: hsl(var(--dream-star) / 0.4);
-    box-shadow: 0 0 2px hsl(var(--dream-star) / 0.3);
+    background: hsl(var(--pure-white) / 0.3);
+    box-shadow: 0 0 3px hsl(var(--pure-white) / 0.3);
     animation: subtle-twinkle 4s ease-in-out infinite;
   }
 
   .star-medium {
-    background: radial-gradient(circle, hsl(var(--dream-star)), hsl(var(--dream-star) / 0.7));
-    box-shadow: 0 0 4px hsl(var(--dream-star) / 0.5);
+    background: radial-gradient(circle, hsl(var(--pure-white)), hsl(var(--pure-white) / 0.7));
+    box-shadow: 0 0 6px hsl(var(--pure-white) / 0.6), 0 0 3px hsl(var(--lavender) / 0.4);
   }
 
   .star-bright {
-    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--dream-star)));
-    box-shadow: 0 0 8px hsl(var(--dream-pearl) / 0.8), 0 0 16px hsl(var(--dream-star) / 0.4);
+    background: radial-gradient(circle, hsl(var(--pure-white)), hsl(var(--lavender)));
+    box-shadow: 0 0 12px hsl(var(--pure-white) / 0.9), 0 0 20px hsl(var(--lavender) / 0.5);
     animation: bright-twinkle 2s ease-in-out infinite;
   }
 
   .star-sparkle {
-    background: radial-gradient(circle, hsl(var(--dream-pearl)), hsl(var(--accent-glow)));
-    box-shadow: 0 0 12px hsl(var(--dream-pearl) / 0.9), 
-                0 0 24px hsl(var(--accent-glow) / 0.6),
-                0 0 36px hsl(var(--editorial-violet) / 0.3);
+    background: radial-gradient(circle, hsl(var(--pure-white)), hsl(var(--pale-purple)));
+    box-shadow: 0 0 16px hsl(var(--pure-white) / 0.95), 
+                0 0 28px hsl(var(--pale-purple) / 0.7),
+                0 0 40px hsl(var(--lavender) / 0.4);
     animation: sparkle 1.5s ease-in-out infinite;
   }
 
